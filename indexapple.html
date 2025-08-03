@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Flower Class Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-F384-F3w7mX95PdgyTmZZ3MECAngseQB83DfGTowi0iMjiWaewV7hmX95PdgyTmZZMECAngseQB83DfGTowi0iMAnji4WaeVhAnF4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #444;
+      margin-bottom: 42px;
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+
+    .prediction-text {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #444;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Flower Class Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+    	<input type="text" name="sepal_length" placeholder="Sepal Length"required="required" />
+        <input type="text" name="sepal_width" placeholder="Sepal Width" required="required" />
+		<input type="text" name="petal_length" placeholder="Petal Length" required="required" />
+		<input type="text" name="petal_width" placeholder="Petal Width" required="required" />
+    <input type="text" name="juiciness" placeholder="Juiciness" required="required" />
+    <input type="text" name="ripeness" placeholder="Ripeness" required="required" />
+    <input type="text" name="acidity" placeholder="Acidity" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   <div class="prediction-text">{{ prediction_text }}</div>
+
+ </div>
+
+
+</body>
+</html>
